@@ -1534,6 +1534,16 @@ static int _mbname_isa(const mbname_t *mbname, const enum imapopt prefix_opts[])
 }
 
 /*
+ * If 'mbname' is a user's 'system' mailbox (toplevel non-IMAP)
+ * returns boolean
+ */
+EXPORTED int mbname_issystem(const mbname_t *mbname)
+{
+    return (strarray_size(mbname_boxes(mbname)) == 1 &&
+            _mbname_isa(mbname, mailbox_prefix_opts+1));  // skip Notes
+}
+
+/*
  * If (internal) mailbox ('name', 'mbtype') is a ('prefix', 'need_mbtype') mailbox
  * returns boolean
  */

@@ -248,6 +248,12 @@ int mboxname_isnonimapmailbox(const char *name, int mbtype);
  */
 int mboxname_isnondeliverymailbox(const char *name, int mbtype);
 
+/*
+ * If 'mbname' is a user's 'system' mailbox (toplevel non-IMAP)
+ * returns boolean
+ */
+int mbname_issystem(const mbname_t *mbname);
+
 /* check if one mboxname is a parent or same as the other */
 int mboxname_is_prefix(const char *longstr, const char *shortstr);
 /* check if one mboxname contains the parent of the other mboxname */
